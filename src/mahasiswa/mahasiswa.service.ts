@@ -44,6 +44,7 @@ export class MahasiswaService {
     this.data[index] = updated;
     return updated;
   }
+
   remove(nim: string): Mahasiswa | null {
     const index = this.data.findIndex((m) => m.nim === nim);
     if (index === -1) return null;
