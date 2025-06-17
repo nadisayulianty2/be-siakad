@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MahasiswaModule } from './mahasiswa/mahasiswa.module';
 import { Mahasiswa } from './mahasiswa/entities/mahasiswa.entity';
+import { MataKuliah } from './mata-kuliah/entities/mata-kuliah.entity';
+import { MataKuliahModule } from './mata-kuliah/mata-kuliah.module';
 
 @Module({
   imports: [
@@ -15,10 +17,11 @@ import { Mahasiswa } from './mahasiswa/entities/mahasiswa.entity';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [Mahasiswa],
+      entities: [Mahasiswa, MataKuliah],
       synchronize: true,
     }),
     MahasiswaModule,
+    MataKuliahModule,
   ],
 })
 export class AppModule {}
