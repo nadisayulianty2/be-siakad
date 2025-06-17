@@ -28,5 +28,27 @@ services:
     depends_on:
       - db  # Pastikan service db (MySQL) dijalankan lebih dulu
 
+  be-siakad:
+    build:
+      context: ../../
+      dockerfile: misc/docker/Dockerfile.dev
+    container_name: be_siakad_backend
+    restart: always
+    env_file:
+       - ../../.env
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../:/app  # <<=== ini akan me-mount kode Anda ke container
+      - /app/node_modules  # Hindari konflik modul antara host dan container
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 3306
+      DATABASE_USERNAME: ${MYSQL_USER}
+      DATABASE_PASSWORD: ${MYSQL_PASSWORD}
+      DATABASE_NAME: ${MYSQL_DATABASE}
+
 volumes:
   mysql_data:  # Volume untuk menyimpan data MySQL secara persisten
