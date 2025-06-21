@@ -5,6 +5,7 @@ import { MahasiswaModule } from './mahasiswa/mahasiswa.module';
 import { Mahasiswa } from './mahasiswa/entities/mahasiswa.entity';
 import { MataKuliah } from './mata-kuliah/entities/mata-kuliah.entity';
 import { MataKuliahModule } from './mata-kuliah/mata-kuliah.module';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { MataKuliahModule } from './mata-kuliah/mata-kuliah.module';
     }),
     MahasiswaModule,
     MataKuliahModule,
+    EmailModule,
   ],
 })
 export class AppModule {}
