@@ -6,6 +6,8 @@ import { Mahasiswa } from './mahasiswa/entities/mahasiswa.entity';
 import { MataKuliah } from './mata-kuliah/entities/mata-kuliah.entity';
 import { MataKuliahModule } from './mata-kuliah/mata-kuliah.module';
 import { EmailModule } from './email/email.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TasksService } from './tasks/tasks.service';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { EmailModule } from './email/email.module';
     MahasiswaModule,
     MataKuliahModule,
     EmailModule,
+    ScheduleModule.forRoot(),
   ],
+  providers: [TasksService],
 })
 export class AppModule {}
